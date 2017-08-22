@@ -42,12 +42,12 @@ describe Nominatim::Point do
   describe '#==' do
     it 'returns true when objects coordinates are the same' do
       other = Nominatim::Point.new(52.5487969264788, -1.81642935385411)
-      (point == other).should be_true
+      expect(point).to eq other
     end
 
     it 'returns false when objects coordinates are different' do
       other = Nominatim::Point.new(-1.81642935385411, 52.5487969264788)
-      (point == other).should be_false
+      expect(point).to_not eq other
     end
   end
 end
