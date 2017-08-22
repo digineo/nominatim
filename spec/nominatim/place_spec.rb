@@ -1,6 +1,13 @@
 require 'spec_helper'
 
 describe Nominatim::Place do
+  describe "YAML.dump" do
+    it "is possible to serialize Place to YAML" do
+      place = Nominatim::Place.new
+      yaml = YAML.dump(place)
+      expect(yaml).to include("!ruby/object:Nominatim::Place")
+    end
+  end
   describe '#display_name' do
     it 'returns a full name when set with display_name' do
       place = Nominatim::Place.new(display_name: 'Los Angeles, California, United States of America')
@@ -16,12 +23,12 @@ describe Nominatim::Place do
   describe '#class' do
     it 'returns a class when set with class' do
       place = Nominatim::Place.new(class: 'place')
-      place.class.should eq 'place'
+      place.type_class.should eq 'place'
     end
 
     it 'returns nil when not set' do
       place = Nominatim::Place.new
-      place.class.should be_nil
+      place.type_class.should be_nil
     end
   end
 

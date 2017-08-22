@@ -17,8 +17,8 @@ module Nominatim
     # Return a class
     #
     # @return [String]
-    def class
-      @class ||= @attrs[:class]
+    def type_class
+      @type_class ||= @attrs[:class]
     end
 
     # Return a type
